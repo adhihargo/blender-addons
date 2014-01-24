@@ -74,7 +74,7 @@ class SetSceneCamera(bpy.types.Operator):
         chosen_camera = bpy.data.objects.get(self.chosen_camera, None)
         scene = context.scene
         if not chosen_camera:
-            self.report({'ERROR'}, "Camera %s not found.")
+            self.report({'ERROR'}, "Camera %s not found." % self.chosen_camera)
             return {'CANCELLED'}
 
         if self.select_chosen:
@@ -106,7 +106,7 @@ class AddCameraMarker(bpy.types.Operator):
         chosen_camera = bpy.data.objects.get(self.chosen_camera, None)
         scene = context.scene
         if not chosen_camera:
-            self.report({'ERROR'}, "Camera %s not found.")
+            self.report({'ERROR'}, "Camera %s not found." % self.chosen_camera)
             return {'CANCELLED'}
 
         current_frame = scene.frame_current
