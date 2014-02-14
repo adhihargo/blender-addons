@@ -49,10 +49,13 @@ class CameraSelectorPanel(bpy.types.Panel):
                          key = lambda o: o.name)
         
         if len(cameras) > 0:
+            column = layout.column(align=True)
             for camera in cameras:
-                row = layout.row(align=True)
-                btn = row.operator("cameraselector.set_scene_camera", 
-                text=camera.name, icon='OUTLINER_DATA_CAMERA')
+                row = column.row(align=True)
+                btn = row.operator(
+                    "cameraselector.set_scene_camera", 
+                    text=camera.name, icon='OUTLINER_DATA_CAMERA' if\
+                        camera == scene.camera else 'BLANK1')
                 btn.chosen_camera = camera.name
 
                 btn = row.operator("cameraselector.add_camera_marker", 
